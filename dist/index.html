@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>Web Components / Intersection Observer / Code Splitting</title>
+
+    <style>
+      html {
+        background-color: #efefef;
+      }
+
+      body {
+        background-color: #fff;
+        margin: 24px auto;
+        padding: 12px;
+        width: 1000px;
+      }
+
+      h1 {
+        font-size: 13px;
+        margin-bottom: 1000px;
+      }
+
+      .UiImgBox {
+        background-color: #ddd;
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        height: 200px;
+      }
+
+      .UiImgBox + .UiImgBox {
+        margin-top: 500px;
+      }
+
+      .UiImg {
+        background: no-repeat center center / cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s ease-in-out;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .UiImg[data-is-intersection="true"] {
+        opacity: 1;
+      }
+    </style>
+
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  </head>
+  <body>
+    <h1>Web Components / Intersection Observer / Code Splitting</h1>
+
+    <div class="UiImgBox">
+      <ui-img class="UiImg js-Lazy" data-src="https://dummyimage.com/350x350/000/fff" data-alt="ui-img" data-is-intersection="false"></ui-img>
+    </div>
+
+    <div class="UiImgBox">
+      <ui-img-dynamic-import class="UiImg js-LazyDynamicImport" data-src="https://dummyimage.com/600x400/000/fff" data-alt="ui-img-dynamic-import" data-is-intersection="false"></ui-img-dynamic-import>
+    </div>
+
+    <script src="./js/bundle.js" async></script>
+  </body>
+</html>

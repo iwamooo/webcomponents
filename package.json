@@ -1,0 +1,42 @@
+{
+  "name": "webcomponents",
+  "version": "1.0.0",
+  "description": "Web Components / Intersection Observer / Code Splitting",
+  "scripts": {
+    "bs": "browser-sync start -s ./dist -f ./dist/*",
+    "dev": "npm run bs & webpack --mode development --watch",
+    "build": "webpack --mode production"
+  },
+  "browserslist": [
+    "ie 11",
+    "last 1 Edge versions",
+    "last 1 Firefox versions",
+    "last 1 Chrome versions",
+    "last 1 Safari versions",
+    "iOS >= 10",
+    "Android >= 4.4",
+    "last 1 ChromeAndroid versions"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.4",
+    "browser-sync": "^2.26.3",
+    "eslint": "^4.19.1",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "promise": "^8.0.2",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "@webcomponents/webcomponentsjs": "^2.2.7",
+    "intersection-observer": "^0.5.1"
+  },
+  "license": "MIT"
+}
