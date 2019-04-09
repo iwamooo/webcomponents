@@ -5,7 +5,8 @@
   "scripts": {
     "bs": "browser-sync start -s ./dist -f ./dist/*",
     "dev": "npm run bs & webpack --mode development --watch",
-    "build": "webpack --mode production"
+    "build": "npm run format:js && webpack --mode production",
+    "format:js": "eslint --fix ./src/js"
   },
   "browserslist": [
     "ie 11",
@@ -26,9 +27,12 @@
     "babel-loader": "^8.0.4",
     "browser-sync": "^2.26.3",
     "eslint": "^4.19.1",
+    "eslint-config-prettier": "^4.1.0",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-promise": "^4.0.1",
+    "prettier": "^1.16.4",
     "promise": "^8.0.2",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2"
