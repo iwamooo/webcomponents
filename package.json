@@ -7,7 +7,8 @@
     "dev": "npm run bs & webpack --mode development --watch",
     "build": "npm run format:js && webpack --mode production",
     "format:css": "stylelint --fix ./src/css",
-    "format:js": "eslint --fix ./src/js"
+    "format:js": "eslint --fix ./src/js",
+    "svgo": "svgo src/img/**/*.svg"
   },
   "browserslist": [
     "ie 11",
@@ -38,6 +39,7 @@
     "stylelint": "^9.10.1",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-order": "^2.2.0",
+    "svgo": "^1.2.1",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2"
   },
