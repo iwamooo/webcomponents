@@ -6,6 +6,7 @@
     "bs": "browser-sync start -s ./dist -f ./dist/*",
     "dev": "npm run bs & webpack --mode development --watch",
     "build": "npm run format:js && webpack --mode production",
+    "format:css": "stylelint --fix ./src/css",
     "format:js": "eslint --fix ./src/js"
   },
   "browserslist": [
@@ -34,6 +35,9 @@
     "eslint-plugin-promise": "^4.0.1",
     "prettier": "^1.16.4",
     "promise": "^8.0.2",
+    "stylelint": "^9.10.1",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-order": "^2.2.0",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2"
   },
