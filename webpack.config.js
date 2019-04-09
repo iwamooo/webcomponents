@@ -1,11 +1,11 @@
-const TerserPlugin = require('terser-webpack-plugin')
 const path = require('path')
+const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = (env, argv) => {
   const IS_DEVELOPMENT = argv.mode === 'development'
 
   return {
-    entry: './src/js/app.js',
+    entry: ['@babel/polyfill', './src/js/app.js'],
     output: {
       filename: 'js/bundle.js',
       path: path.join(__dirname, 'dist')
