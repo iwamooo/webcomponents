@@ -1,8 +1,10 @@
 'use strict'
 
-import Observer from '@modules/Observer'
+import { mounted } from '@utilities'
+import { observer } from '@namespaces/observer'
 import UiImg from '@components/UiImg'
 
-customElements.define('ui-img', UiImg)
-
-new Observer()
+mounted(() => {
+  customElements.define('ui-img', UiImg)
+  observer.init()
+})
