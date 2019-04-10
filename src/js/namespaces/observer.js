@@ -3,17 +3,12 @@
 import { elem } from '@utilities'
 import { addObserverEvent } from '@utilities/event'
 
-export const observer = {
-  init() {
-    this.uiImg()
-    this.uiImgDynamicImport()
-  },
-
+const uiImg = {
   /**
    * @description data-srcに設定されている画像をbackground-imageとshadowRoot内のimgに設定する
    * @param {Object} el [要素]
    */
-  imgDisplay(el) {
+  display(el) {
     el.setAttribute('style', `background-image: url(${el.dataset.src})`)
     el.dataset.isIntersection = true
 
@@ -23,33 +18,28 @@ export const observer = {
     imgEl.setAttribute('alt', el.dataset.alt)
   },
 
-  uiImg() {
-    addObserverEvent({
-      el: elem('js-Lazy'),
-      func: this.imgDisplay
-    })
-  },
+  async dynamicImport(el) {
+    try {
+      const UiImgDynamicImport = await import('@components/UiImgDynamicImport')
 
-  uiImgDynamicImport() {
-    const intersectionFunction = async el => {
-      try {
-        const UiImgDynamicImport = await import('@components/UiImgDynamicImport')
+      customElements.define('ui-img-dynamic-import', UiImgDynamicImport.default)
 
-        customElements.define(
-          'ui-img-dynamic-import',
-          UiImgDynamicImport.default
-        )
-
-        this.imgDisplay(el)
-      } catch (error) {
-        /* eslint no-console: 0 */
-        console.log(error)
-      }
+      this.display(el)
+    } catch (error) {
+      /* eslint no-console: 0 */
+      console.log(error)
     }
-
-    addObserverEvent({
-      el: elem('js-LazyDynamicImport'),
-      func: intersectionFunction
-    })
   }
+}
+
+export default () => {
+  addObserverEvent({
+    el: elem('js-Lazy'),
+    func: uiImg.display
+  })
+
+  addObserverEvent({
+    el: elem('js-LazyDynamicImport'),
+    func: uiImg.dynamicImport
+  })
 }
