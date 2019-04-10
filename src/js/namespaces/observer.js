@@ -10,7 +10,7 @@ export const observer = {
   },
 
   /**
-   * @description 画像読み込み
+   * @description data-srcに設定されている画像をbackground-imageとshadowRoot内のimgに設定する
    * @param {Object} el [要素]
    */
   imgDisplay(el) {
